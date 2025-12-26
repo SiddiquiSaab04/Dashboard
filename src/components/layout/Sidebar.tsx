@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { menuItems } from "./menu/MenuList";
 import { ToggleButton } from "../buttons/ToggleButton";
@@ -7,9 +7,9 @@ const Sidebar = () => {
     <aside className="bg-primary min-h-dvh w-60 flex flex-col justify-between items-start px-10 py-5">
       <div className="flex flex-col gap-y-24">
         <div className="max-w-[3rem]">
-          <div className="flex space-x-1 items-center">
+          <div className="flex space-x-1 items-center justify-center w-full">
             <img className="" src={logo} alt="Dashboard" />
-            <p className="text-white font-bold text-xl">Dashboard</p>
+            {/* <p className="text-white font-bold text-xl">Dashboard</p> */}
           </div>
         </div>
         <div className="">
@@ -24,7 +24,7 @@ const Sidebar = () => {
                   }
                 >
                   <span className="">{list.icon}</span>
-                  <span className="text-lg font-bold">{list.item}</span>
+                  <span className="text-lg font-semibold">{list.item}</span>
                 </NavLink>
               </li>
             ))}
