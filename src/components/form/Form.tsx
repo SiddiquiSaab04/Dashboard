@@ -16,7 +16,6 @@ const Form = <T extends FieldValues>({
   } = useForm<T>({
     resolver: zodResolver(schema as any),
   });
-
   return (
     <div>
       <form
@@ -33,7 +32,7 @@ const Form = <T extends FieldValues>({
           />
         ))}
         <button
-          className="border border-primary rounded-lg py-1.5 mt-4 w-full bg-accent/50 backdrop-blur-xs"
+          className="border border-primary rounded-lg py-1.5 mt-4 w-full bg-accent/50 backdrop-blur-xs cursor-pointer"
           type="submit"
           disabled={isSubmitting}
         >

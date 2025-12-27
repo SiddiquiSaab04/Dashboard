@@ -7,19 +7,43 @@ import {
 import type { FieldProps } from "../../components/interface/Field";
 import { useLogin } from "../../components/hooks/useLogin";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../feature/authSlice";
 
 const Login = () => {
   const { mutate } = useLogin();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (data: LoginFormValues) => {
     mutate(data, {
-      onSuccess: (data) => {
-        console.log(data);
-        navigate("/");
+      onSuccess: (response) => {
+        console.log("Full API Response:", response);
+        const user = {
+          id: response.id,
+          username: response.username,
+          email: response.email,
+          firstName: response.firstName,
+          lastName: response.lastName,
+          gender: response.gender,
+          image: response.image,
+        };
+        const accessToken = response.accessToken;
+
+        if (user && accessToken) {
+          dispatch(
+            setCredentials({
+              user: user,
+              accessToken: accessToken,
+            })
+          );
+          navigate("/");
+        } else {
+          console.error("User or token not found in response!");
+        }
       },
       onError: (error) => {
-        console.log(error);
+        console.error("Login error:", error);
       },
     });
   };
