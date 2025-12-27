@@ -8,9 +8,9 @@ const Input: React.FC<InputProps> = ({
   error,
 }: InputProps) => {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col w-full">
       {label && (
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        <label className="block text-lg font-normal text-primary dark:text-white">
           {label}
         </label>
       )}
@@ -19,6 +19,7 @@ const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         {...register(name as string)}
         error={error}
+        className="border border-secondary  rounded-lg py-1.5 px-1 text-secondary w-full focus:outline-none focus:ring-1 focus:ring-accent"
       />
     </div>
   );

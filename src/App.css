@@ -141,3 +141,9 @@
     0 0 25px rgba(255, 255, 255, 0.2);
   transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Плавный переход */
 }
+
+
+.login-form-shadow {
+  box-shadow: 4px 4px 10px #b1ba80;
+  backdrop-filter: blur(10px);
+}
