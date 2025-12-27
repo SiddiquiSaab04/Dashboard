@@ -4,23 +4,22 @@ import { menuItems } from "./menu/MenuList";
 import { ToggleButton } from "../buttons/ToggleButton";
 const Sidebar = () => {
   return (
-    <aside className="bg-primary min-h-dvh w-60 flex flex-col justify-between items-start px-10 py-5">
+    <aside className="bg-primary min-h-dvh w-72 flex flex-col justify-between items-start px-6 py-5">
       <div className="flex flex-col gap-y-24">
         <div className="max-w-[3rem]">
           <div className="flex space-x-1 items-center justify-center w-full">
             <img className="" src={logo} alt="Dashboard" />
-            {/* <p className="text-white font-bold text-xl">Dashboard</p> */}
           </div>
         </div>
         <div className="">
-          <ul className="space-y-4  ">
+          <ul className="space-y-3  ">
             {menuItems.map((list) => (
-              <li key={list.item}>
+              <li key={list.item} >
                 <NavLink
                   to={list.item}
                   className={({ isActive }) =>
-                    `flex space-x-4 items-center text-white hover:text-accent
-                ${isActive ? "text-accent" : "text-white"}`
+                    `flex space-x-4 items-center w-44 px-2 py-1.5 rounded-lg hover:bg-accent hover:text-primary
+                ${isActive ? "text-primary bg-accent" : "text-white"}`
                   }
                 >
                   <span className="">{list.icon}</span>
