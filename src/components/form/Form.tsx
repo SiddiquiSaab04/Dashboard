@@ -19,7 +19,10 @@ const Form = <T extends FieldValues>({
 
   return (
     <div>
-      <form className="flex flex-col space-y-4" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="flex flex-col space-y-4"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         {fields.map((field) => (
           <Input
             key={field.name as string}
@@ -29,7 +32,11 @@ const Form = <T extends FieldValues>({
             name={field.name as string}
           />
         ))}
-        <button className="border border-primary rounded-lg py-1.5 mt-4 w-full bg-accent/50 backdrop-blur-xs" type="submit" disabled={isSubmitting}>
+        <button
+          className="border border-primary rounded-lg py-1.5 mt-4 w-full bg-accent/50 backdrop-blur-xs"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
