@@ -1,10 +1,17 @@
 import NavbarIcon from "../icons/NavbarIcon";
-import { Bell, Settings } from "lucide-react";
-import { useSelector } from "react-redux";
+import { Settings, LogOutIcon } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
+import { useNavigate } from "react-router";
+import { logout } from "../../feature/authSlice";
 const Navbar = () => {
   const user = useSelector((state: RootState) => state.auth.user);
-  console.log(user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
   return (
     <nav
       className="flex items-center justify-between w-full h-20 bg-primary px-10 
@@ -14,12 +21,8 @@ const Navbar = () => {
         <NavbarIcon />
       </div>
       <div className="flex gap-x-4 items-center">
-        <div className="relative bg-accent border border-secondary  p-2.5 rounded-full cursor-pointer hover:scale-105 transition-transform">
-          <Bell size={18} className="text-secondary" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-pop rounded-full"></span>
-        </div>
-        <div className="p-2.5 bg-accent border border-secondary rounded-full cursor-pointer hover:scale-105 transition-transform">
-          <Settings size={20} className="text-secondary" />
+        <div className="p-2.5 bg-secondary border border-accent rounded-full cursor-pointer hover:scale-105 transition-transform">
+          <Settings size={20} className="text-accent" />
         </div>
         <div className="flex items-center gap-x-2">
           <img
@@ -28,9 +31,11 @@ const Navbar = () => {
             className="w-10 h-10 rounded-full border border-secondary"
           />
           <div className="flex flex-col">
-            <p className="text-primary text-sm font-normal">{user?.firstName} </p>
-            <p className="text-primary text-sm font-normal">{user?.lastName}</p>
+            <p className="text-accent text-sm font-normal">
+              {user?.firstName}{" "}
+            </p>
           </div>
+          <LogOutIcon className="text-accent" onClick={handleLogout} />
         </div>
       </div>
     </nav>

@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { AuthState } from "../components/interface/AuthState";
 
 const initialState: AuthState = {
-  user: JSON.parse(localStorage.getItem("user") || "null"),
-  accessToken: localStorage.getItem("accessToken"),
-  isLoggedIn: localStorage.getItem("isLoggedIn") === "false",
+  user: JSON.parse(sessionStorage.getItem("user") || "null"),
+  accessToken: sessionStorage.getItem("accessToken"),
+  isLoggedIn: sessionStorage.getItem("isLoggedIn") === "true",
 };
 
 const authSlice = createSlice({
@@ -12,9 +12,9 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      localStorage.setItem("user", JSON.stringify(action.payload.user));
-      localStorage.setItem("accessToken", JSON.stringify(action.payload.accessToken));
-      localStorage.setItem("isLoggedIn", JSON.stringify(true));
+      sessionStorage.setItem("user", JSON.stringify(action.payload.user));
+      sessionStorage.setItem("accessToken", JSON.stringify(action.payload.accessToken));
+      sessionStorage.setItem("isLoggedIn", JSON.stringify(true));
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
@@ -23,9 +23,9 @@ const authSlice = createSlice({
       state.user = null;
       state.accessToken = null;
       state.isLoggedIn = false;
-      localStorage.removeItem("user");
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("isLoggedIn");
+      sessionStorage.removeItem("user");
+      sessionStorage.removeItem("accessToken");
+      sessionStorage.removeItem("isLoggedIn");
     },
   },
 });
