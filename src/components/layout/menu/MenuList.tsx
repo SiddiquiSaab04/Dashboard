@@ -6,7 +6,7 @@ export const menuItems = [
         icon: MenuIcons.layoutDashboard 
     },
     {
-        item: "Users",
+        item: "Products",
         icon: MenuIcons.users
     },
     {
