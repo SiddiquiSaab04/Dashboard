@@ -7,7 +7,7 @@ export const StatsCard = ({
   description,
 }: StatsCardProps) => {
   return (
-    <Card className="flex justify-between border border-primary rounded-lg p-4 bg-gradient-to-tr from-base/20 to-accent/20 backdrop-blur-xl shadow-lg">
+    <Card className="flex justify-between border border-primary rounded-lg px-4 py-8 bg-gradient-to-tr from-base/20 to-accent/20 backdrop-blur-xl shadow-lg">
       <div className="flex flex-col items-start">
         {title && <span className="text-2xl font-bold">{title}</span>}
         {value && <span className="text-xl font-normal">{value}</span>}
