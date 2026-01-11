@@ -6,7 +6,7 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
-import { RechartsDevtools } from "@recharts/devtools";
+// import { RechartsDevtools } from "@recharts/devtools";
 
 // #region Sample data
 const data = [
@@ -100,7 +100,7 @@ const AreaChartFillByValue = () => {
         stroke="#000"
         fill="url(#splitColor)"
       />
-      <RechartsDevtools />
+      {/* <RechartsDevtools /> */}
     </AreaChart>
   );
 };

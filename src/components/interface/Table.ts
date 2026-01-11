@@ -11,8 +11,8 @@ export interface ActionHandlers<T> {
 }
 
 export interface TableProps<T> {
-  columns: TableColumn<T>[];
-  data: T[];
+  columns?: TableColumn<T>[];
+  data?: T[];
   actions?: ActionHandlers<T> | [] | React.ReactNode ;
   customStyles?: TableStyles;
 }

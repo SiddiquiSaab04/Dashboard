@@ -14,7 +14,7 @@ const Navbar = () => {
   };
   return (
     <nav
-      className="flex items-center justify-between w-full h-20 bg-primary px-10 
+      className="flex items-center justify-between w-full h-20 py-4 bg-primary px-10 
     "
     >
       <div className="cursor-pointer">

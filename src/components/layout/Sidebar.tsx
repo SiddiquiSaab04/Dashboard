@@ -4,7 +4,7 @@ import { menuItems } from "./menu/MenuList";
 import { ToggleButton } from "../buttons/ToggleButton";
 const Sidebar = () => {
   return (
-    <aside className="bg-primary min-h-dvh w-72 flex flex-col justify-between items-start px-6 py-5">
+    <aside className="bg-primary h-dvh w-72 flex flex-col justify-between items-start px-6 py-5">
       <div className="flex flex-col gap-y-24">
         <div className="max-w-[3rem]">
           <div className="flex space-x-1 items-center justify-center w-full">
