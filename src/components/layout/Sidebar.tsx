@@ -11,15 +11,15 @@ const Sidebar = () => {
             <img className="" src={logo} alt="Dashboard" />
           </div>
         </div>
-        <div className="">
-          <ul className="space-y-3  ">
+        <div className="w-full">
+          <ul className="space-y-5  ">
             {menuItems.map((list) => (
               <li key={list.item} >
                 <NavLink
                   to={list.item}
                   className={({ isActive }) =>
-                    `flex space-x-4 items-center w-44 px-2 py-1.5 rounded-lg hover:bg-accent hover:text-primary
-                ${isActive ? "text-primary bg-accent" : "text-white"}`
+                    `flex space-x-4 items-center w-44 px-2 py-1.5  hover:border-l-4 hover:border-l-pop hover:bg-accent 
+                ${isActive ? "text-text bg-accent border-l-4 border-l-pop" : "text-text"}`
                   }
                 >
                   <span className="">{list.icon}</span>

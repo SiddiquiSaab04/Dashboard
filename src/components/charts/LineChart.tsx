@@ -1,36 +1,108 @@
 import {
-  Chart as ChartJS,
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
+} from "recharts";
+import { RechartsDevtools } from "@recharts/devtools";
 
-ChartJS.register(
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-);
+// #region Sample data
+const data = [
+  {
+    name: "products",
+    uv: 4000,
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    name: "orders",
+    uv: 3000,
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    name: "users",
+    uv: -1000,
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    name: "sales",
+    uv: 500,
+    pv: 3908,
+    amt: 2000,
+  },
+  {
+    name: "returns",
+    uv: -2000,
+    pv: 4800,
+    amt: 2181,
+  },
+];
 
-const LineChart = () => {
-  const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May"],
-    datasets: [
-      {
-        label: "Users",
-        data: [5, 15, 25, 35, 50],
-        borderColor: "#ddf45b",
-        tension: 0.10,
-        fill: false,
-      },
-    ],
-  };
+// #endregion
+const gradientOffset = () => {
+  const dataMax = Math.max(...data.map((i) => i.uv));
+  const dataMin = Math.min(...data.map((i) => i.uv));
 
-  return <Line data={data} width={500} height={380}   options={{responsive: true, maintainAspectRatio: false}} />;
+  if (dataMax <= 0) {
+    return 0;
+  }
+  if (dataMin >= 0) {
+    return 1;
+  }
+
+  return dataMax / (dataMax - dataMin);
 };
 
-export default LineChart;
+const off = gradientOffset();
+
+const AreaChartFillByValue = () => {
+  return (
+    <AreaChart
+      style={{
+        width: "100%",
+        maxWidth: "100%",
+        height: "350px",
+        aspectRatio: 1.618,
+      }}
+      responsive
+      data={data}
+      margin={{
+        top: 10,
+        right: 0,
+        left: 0,
+        bottom: 0,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis
+        width="auto"
+        ticks={[0, 100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000]}
+        domain={[100, 4000]}
+        // axisLine={true}
+      />
+      <Tooltip />
+      <defs>
+        <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#B688F7" stopOpacity={1} />
+          <stop offset={off} stopColor="#B688F7" stopOpacity={0.1} />
+          <stop offset={off} stopColor="#A1D99B" stopOpacity={0.1} />
+          <stop offset="1" stopColor="#A1D99B" stopOpacity={1} />
+        </linearGradient>
+      </defs>
+      <Area
+        type="monotone"
+        dataKey="uv"
+        stroke="#000"
+        fill="url(#splitColor)"
+      />
+      <RechartsDevtools />
+    </AreaChart>
+  );
+};
+
+export default AreaChartFillByValue;

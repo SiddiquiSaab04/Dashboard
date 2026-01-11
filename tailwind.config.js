@@ -8,11 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        "base": "#EFEFEF",
-        "primary": "#333333",
+        "base": "#FFFFFF",
+        "primary": "#F0F0F0",
         "secondary": "#5e5e5e",
-        "accent": "#ddf45b",
-        "pop": "#e2aedd",
+        "text":"#212121",
+        "accent": "#eadcf7",
+        "pop": "#B688F7",
       }
     },
   },

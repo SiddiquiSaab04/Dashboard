@@ -1,5 +1,5 @@
 import NavbarIcon from "../icons/NavbarIcon";
-import { Settings, LogOutIcon } from "lucide-react";
+import { LogOutIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
 import { useNavigate } from "react-router";
@@ -21,21 +21,23 @@ const Navbar = () => {
         <NavbarIcon />
       </div>
       <div className="flex gap-x-4 items-center">
-        <div className="p-2.5 bg-secondary border border-accent rounded-full cursor-pointer hover:scale-105 transition-transform">
-          <Settings size={20} className="text-accent" />
-        </div>
-        <div className="flex items-center gap-x-2">
+        {/* <div className="p-2.5 bg-pop border border-accent rounded-full cursor-pointer hover:scale-105 transition-transform">
+          <Settings size={20} className="text-text" />
+        </div> */}
+        <div className="flex items-center gap-x-5">
           <img
             src={user?.image}
             alt="userImage"
-            className="w-10 h-10 rounded-full border border-secondary"
+            className="w-10 h-10 rounded-full  border-2 border-pop"
           />
           <div className="flex flex-col">
-            <p className="text-accent text-sm font-normal">
+            <p className="text-text text-lg font-normal">
               {user?.firstName}{" "}
             </p>
           </div>
-          <LogOutIcon className="text-accent" onClick={handleLogout} />
+          <div className="bg-pop p-2 rounded-full">
+          <LogOutIcon className="text-primary" onClick={handleLogout} />
+          </div>
         </div>
       </div>
     </nav>

@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 
 const Layout: React.FC = () => {
   return (
-    <div className="flex w-full">
+    <div className="flex w-full bg-base">
       <Sidebar />
       <div className="flex flex-col w-full">
         <Navbar />
