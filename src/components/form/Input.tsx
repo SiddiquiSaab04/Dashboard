@@ -10,7 +10,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="flex flex-col w-full">
       {label && (
-        <label className="block text-lg font-normal text-primary dark:text-white">
+        <label className="block text-lg font-normal text-secondary dark:text-white">
           {label}
         </label>
       )}

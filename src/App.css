@@ -116,13 +116,13 @@
 .switch input:checked + .slider:after {
   background: radial-gradient(
     circle,
-    #ddf45b,
-    #e2aedd
+    #b688f7,
+    #eee5fb
   ); /* Оранжевый градиент */
   transform: translateX(2.5em); /* Увеличиваем смещение */
   box-shadow:
-    0 0 30px #ddf45b,
-    0 0 60px e2aedd;
+    0 0 30px #b688f7,
+    0 0 60px #b688f7;
 }
 
 /* Эффект фокуса */
@@ -144,6 +144,6 @@
 
 
 .login-form-shadow {
-  box-shadow: 4px 4px 10px #b1ba80;
+  box-shadow: 2px 2px 10px #eadcf7;
   backdrop-filter: blur(10px);
 }

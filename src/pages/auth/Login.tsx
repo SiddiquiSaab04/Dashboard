@@ -67,8 +67,8 @@ const Login = () => {
         }}
       >
         <div className="flex flex-col justify-center items-center h-full w-full absolute  z-10">
-          <div className=" border border-primary w-[500px] px-24 py-20  rounded-lg  login-form-shadow">
-            <h1 className="text-4xl font-bold text-primary w-full text-center">
+          <div className=" border border-pop w-[500px] px-24 py-20  rounded-lg  login-form-shadow">
+            <h1 className="text-4xl font-bold text-secondary w-full text-center">
               Login
             </h1>
             <div className=" flex flex-col justify-center ">

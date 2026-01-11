@@ -4,9 +4,9 @@ import Sidebar from "./Sidebar";
 
 const Layout: React.FC = () => {
   return (
-    <div className="flex w-full bg-base">
+    <div className="flex bg-base">
       <Sidebar />
-      <div className="flex relative flex-col w-full  h-dvh">
+      <div className="flex relative flex-col w-full h-dvh overflow-x-hidden">
         <Navbar />
         <Content />
       </div>

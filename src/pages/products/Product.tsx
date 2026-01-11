@@ -1,99 +1,64 @@
 import PageTitle from "../../components/title/PageTitle";
 import Template from "../../components/layout/Template";
+import { useProducts } from "../../components/hooks/useProduct";
+import type { Product } from "../../components/interface/Product";
 import Table from "../../components/table/Table";
-import { products } from "../../utils/products";
 import type { TableColumn } from "react-data-table-component";
+export const Products = () => {
+  const { data, isLoading, error } = useProducts();
 
-interface ProductData {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  stock: number;
-  status: string;
-  rating: number;
-  image: string;
-}
+  if (isLoading) return <div>Loading...</div>;
 
-const Product = () => {
-  const columns: TableColumn<ProductData>[] = [
+  if (error) return <div>Error: {error.message}</div>;
+
+  console.log(data);
+
+  const columns: TableColumn<Product>[] = [
     {
-      name: "Product",
-      selector: (row: ProductData) => row.name,
-      sortable: true,
-      cell: (row: ProductData) => (
-        <div className="flex items-center gap-3 py-2">
-          <img
-            src={row.image}
-            alt={row.name}
-            className="w-10 h-10 rounded-lg object-cover shadow-sm"
-          />
-          <span className="font-medium text-slate-700">{row.name}</span>
-        </div>
-      ),
-      grow: 2,
+      id: "id",
+      name: "ID",
+      selector: (row: Product) => row.id,
+      sortable: false,
     },
     {
+      id: "images",
+      name: "Image",
+      selector: (row: Product) => row.images?.[0] || "",
+      cell: (row: Product) => (
+        <div className="py-2">
+          {row.images?.[0] ? (
+            <img
+              src={row.images[0]}
+              alt={row.title}
+              className="w-12 h-12 rounded-lg object-cover shadow-sm border border-slate-100"
+            />
+          ) : (
+            <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 text-[10px]">
+              No Image
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      id: "title",
+      name: "Title",
+      selector: (row: Product) => row.title,
+      sortable: false,
+    },
+    {
+      id: "category",
       name: "Category",
-      selector: (row: ProductData) => row.category,
-      sortable: true,
-      cell: (row: ProductData) => (
-        <span className="text-slate-500">{row.category}</span>
-      ),
+      selector: (row: Product) => row.category,
+      sortable: false,
     },
     {
+      id: "price",
       name: "Price",
-      selector: (row: ProductData) => row.price,
-      sortable: true,
-      cell: (row: ProductData) => (
-        <span className="font-semibold text-slate-900">
-          ${row.price.toFixed(2)}
-        </span>
-      ),
-    },
-    {
-      name: "Stock",
-      selector: (row: ProductData) => row.stock,
-      sortable: true,
-      cell: (row: ProductData) => (
-        <span
-          className={`${
-            row.stock < 20 ? "text-amber-600 font-medium" : "text-slate-600"
-          }`}
-        >
-          {row.stock} units
-        </span>
-      ),
-    },
-    {
-      name: "Rating",
-      selector: (row: ProductData) => row.rating,
-      sortable: true,
-      cell: (row: ProductData) => (
-        <div className="flex items-center gap-1">
-          <span className="text-amber-400">★</span>
-          <span className="text-slate-600">{row.rating}</span>
-        </div>
-      ),
-    },
-    {
-      name: "Status",
-      selector: (row: ProductData) => row.status,
-      sortable: true,
-      cell: (row: ProductData) => (
-        <span
-          className={`px-3 py-1 rounded-full text-xs font-medium ${
-            row.status === "Active"
-              ? "bg-emerald-100 text-emerald-700"
-              : "bg-amber-100 text-amber-700"
-          }`}
-        >
-          {row.status}
-        </span>
-      ),
+      selector: (row: Product) => row.price,
+      sortable: false,
     },
   ];
-
   return (
     <Template>
       <div className="p-6">
@@ -101,51 +66,12 @@ const Product = () => {
           title="Product Inventory"
           titleStyleClass="text-3xl font-bold text-slate-800 mb-6"
         />
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-          <Table
-            columns={columns}
-            data={products}
-            customStyles={{
-              header: {
-                style: {
-                  display: "none",
-                },
-              },
-              headRow: {
-                style: {
-                  backgroundColor: "#f8fafc",
-                  borderBottomColor: "#f1f5f9",
-                  minHeight: "56px",
-                },
-              },
-              headCells: {
-                style: {
-                  color: "#64748b",
-                  fontSize: "12px",
-                  fontWeight: "600",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                },
-              },
-              rows: {
-                style: {
-                  minHeight: "72px",
-                  "&:not(:last-of-type)": {
-                    borderBottomColor: "#f1f5f9",
-                  },
-                  "&:hover": {
-                    backgroundColor: "#f8fafc",
-                    cursor: "pointer",
-                    transition: "all 0.2s",
-                  },
-                },
-              },
-            }}
-          />
+        <div>
+          <Table data={data?.products} columns={columns} />
         </div>
       </div>
     </Template>
   );
 };
 
-export default Product;
+export default Products;

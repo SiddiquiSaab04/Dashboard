@@ -7,13 +7,13 @@ export interface ProductDimensions {
 export interface ProductReview {
   rating: number;
   comment: string;
-  date: string; 
+  date: string;
   reviewerName: string;
   reviewerEmail: string;
 }
 
-export  interface ProductMeta {
-  createdAt: string; 
+export interface ProductMeta {
+  createdAt: string;
   updatedAt: string;
   barcode: string;
   qrCode: string;
