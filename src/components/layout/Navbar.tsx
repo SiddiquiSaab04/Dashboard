@@ -3,7 +3,7 @@ import { LogOutIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
 import { useNavigate } from "react-router";
-import { logout } from "../../feature/authSlice";
+import { logout, toggleSidebar } from "../../feature/authSlice";
 const Navbar = () => {
   const user = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch();
@@ -12,13 +12,16 @@ const Navbar = () => {
     dispatch(logout());
     navigate("/login");
   };
+  const toggleClick = () => {
+    dispatch(toggleSidebar());
+  };
   return (
     <nav
       className="flex items-center justify-between w-full h-20 py-4 bg-primary px-10 
     "
     >
-      <div className="cursor-pointer">
-        <NavbarIcon />
+      <div className="cursor-pointer" onClick={toggleClick}>
+        <NavbarIcon/>
       </div>
       <div className="flex gap-x-4 items-center">
         {/* <div className="p-2.5 bg-pop border border-accent rounded-full cursor-pointer hover:scale-105 transition-transform">

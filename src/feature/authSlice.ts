@@ -5,6 +5,7 @@ const initialState: AuthState = {
   user: JSON.parse(sessionStorage.getItem("user") || "null"),
   accessToken: sessionStorage.getItem("accessToken"),
   isLoggedIn: sessionStorage.getItem("isLoggedIn") === "true",
+  sidebarOpen: true,
 };
 
 const authSlice = createSlice({
@@ -19,6 +20,9 @@ const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
     },
+    toggleSidebar: (state) => {
+      state.sidebarOpen = !state.sidebarOpen;
+    },
     logout: (state) => {
       state.user = null;
       state.accessToken = null;
@@ -30,5 +34,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setCredentials, toggleSidebar, logout } = authSlice.actions;
 export default authSlice.reducer;
