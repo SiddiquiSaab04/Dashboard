@@ -4,6 +4,8 @@ import Layout from "../components/layout/Layout";
 import Login from "../pages/auth/Login";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Products from "../pages/products/Product";
+import { Settings } from "../pages/settings/Settings";
+import { Report } from "../pages/reports/Report";
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
+      },
+      {
+        path: "/report",
+        element: <Report />,
       }
     ],
   },
