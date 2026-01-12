@@ -1,11 +1,13 @@
-/* From Uiverse.io by alex_4849 */ 
-/* The switch - the box around the slider */
+
 .switch {
-  font-size: 20px; /* Увеличиваем размер */
+  /* font-size: 20px; */
   position: relative;
   display: inline-block;
-  width: 5em; /* Увеличиваем ширину */
-  height: 2.5em; /* Увеличиваем высоту */
+  max-width: 5em; 
+  height: 2.5em; 
+  transition: all 0.1s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+  cursor: pointer;
+
 }
 
 /* Hide default HTML checkbox */
