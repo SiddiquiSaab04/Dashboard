@@ -5,7 +5,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 
 const data = [
@@ -58,9 +57,9 @@ const SimpleBarChart = () => {
   return (
     <BarChart
       style={{
-        width: "100%",
-        maxWidth: "700px",
-        maxHeight: "70vh",
+        // width: "100%",
+        maxWidth: "600px",
+        maxHeight: "600px",
         aspectRatio: 1.618,
       }}
       responsive
@@ -76,7 +75,6 @@ const SimpleBarChart = () => {
       <XAxis dataKey="name" />
       <YAxis width="auto" />
       <Tooltip />
-      <Legend />
       <Bar
         dataKey="pv"
         fill="#A1D99B"

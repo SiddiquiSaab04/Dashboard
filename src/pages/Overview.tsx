@@ -5,6 +5,7 @@ import { stats } from "../utils/Stats";
 import LineChart from "../components/charts/LineChart";
 import PieChart from "../components/charts/PieChart";
 import BarChart from "../components/charts/BarChart";
+import OverviewProductList from "../components/lists/OverviewProductList";
 const Overview: React.FC = () => {
   return (
     <>
@@ -26,22 +27,22 @@ const Overview: React.FC = () => {
         </div>
         <div className="grid grid-cols-4 gap-4 my-14">
           <div className="col-span-3">
-            <div className="">
+            <div className="border border-gray-200 rounded-xl p-3 py-5">
             <LineChart />
             </div>
           </div>
-          <div className="col-span-1 justify-center items-center">
+          <div className="col-span-1 justify-center items-center border border-gray-200 rounded-xl p-3 py-5">
             <PieChart />
           </div>
         </div>
         <div className="grid grid-cols-4 gap-4">
-          <div className="col-span-3">
-            <div className="">
-            <BarChart />
+          <div className="col-span-2">
+            <div className=" border border-gray-200 rounded-xl">
+            <OverviewProductList />
             </div>
           </div> 
-          <div className="col-span-1 justify-center items-center">
-            <PieChart />
+          <div className="col-span-2 justify-center items-center  border border-gray-200 rounded-xl p-3 py-5">
+            <BarChart />
           </div>
         </div>
       </Template>
