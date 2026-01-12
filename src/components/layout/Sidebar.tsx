@@ -4,10 +4,10 @@ import { menuItems } from "./menu/MenuList";
 import { ToggleButton } from "../buttons/ToggleButton";
 const Sidebar = () => {
   return (
-    <aside className="bg-primary h-dvh w-72 flex flex-col justify-between items-start px-6 py-5">
-      <div className="flex flex-col gap-y-24">
+    <aside className="bg-primary h-dvh w-72 flex flex-col justify-between items-start py-5">
+      <div className="flex flex-col gap-y-24 w-full">
         <div className="max-w-[3rem]">
-          <div className="flex space-x-1 items-center justify-center w-full">
+          <div className="flex space-x-1 items-center justify-center w-full mx-8">
             <img className="" src={logo} alt="Dashboard" />
           </div>
         </div>
@@ -18,8 +18,8 @@ const Sidebar = () => {
                 <NavLink
                   to={list.item}
                   className={({ isActive }) =>
-                    `flex space-x-4 items-center w-44 px-2 py-1.5  hover:border-l-4 hover:border-l-pop hover:bg-accent 
-                ${isActive ? "text-text bg-accent border-l-4 border-l-pop" : "text-text"}`
+                    `flex space-x-4 items-center px-6 py-1.5  hover:border-r-4 hover:border-r-pop hover:bg-accent 
+                ${isActive ? "text-text bg-accent border-r-4 border-r-pop" : "text-text"}`
                   }
                 >
                   <span className="">{list.icon}</span>
@@ -30,7 +30,7 @@ const Sidebar = () => {
           </ul>
         </div>
       </div>
-      <div className="mb-10">
+      <div className="mx-10">
         <ToggleButton />
       </div>
     </aside>
